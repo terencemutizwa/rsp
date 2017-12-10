@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     context: __dirname + '/src',
@@ -13,6 +14,13 @@ module.exports = {
         filename: 'app.min.js'
     },
     module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            }
+        ],
         rules: [
             {
                 test: /\.scss$/,
@@ -22,6 +30,7 @@ module.exports = {
                     },
                     {
                         loader: 'css-loader',
+
                         options: {
                             sourceMap: true
                         }
@@ -30,38 +39,42 @@ module.exports = {
                         loader: 'fast-sass-loader'
                     }
                 ]
-            }
-        ],
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
             },
             {
-                test: /\.html$/, loader: 'html-loader'
+                test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)$/i,
+                loader: 'file-loader?name=assets/[name].[ext]'
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: "file-loader?name=/dist/img/[name].[ext]"
+                test: /\.html$/,
+                loader: 'html-loader'
             }
         ]
+
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist'
+        contentBase: './src',
+        hot: true,
+        watchContentBase: true,
+        overlay: true
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.min.js'}),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.min.js'
+        }),
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'Rock Paper Scissors',
             template: './index.html'
         }),
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
+            $: 'jquery',
+            jQuery: 'jquery'
         }),
-        new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin(['dist']),
+        //new UglifyJSPlugin()
     ]
 };
 

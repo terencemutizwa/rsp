@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html >
+<head  >
   <meta http-equiv="Content-type"
     content="text/html; charset=utf-8"/>
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>RPS</title>
 </head>
-<body>
+<body ng-app="rsp">
+<div class="site-wrapper">
+
+  <div class="site-wrapper-inner">
+
+    <div class="cover-container">
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Rock Paper Scissors!</h1>
+        <rsp-game players="1"></rsp-game>
+      </main>
+
+      <footer class="mastfoot">
+        <div class="inner">
+          <p>&copy; RockPaperScissors 2017</p>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>

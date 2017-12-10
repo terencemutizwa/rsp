@@ -1,0 +1,20 @@
+ul.options {
+  list-style: none;
+  padding: 0;
+  li {
+    border: solid 1px #eee;
+    padding: 10px;
+    margin: 10px 0;
+    display: block;
+    border-radius: 100px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  .btn-lg {
+    border-radius: 50px;
+
+  }
+}

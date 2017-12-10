@@ -1,0 +1,21 @@
+<div class="results"
+  ng-class="{
+  'winner': $ctrl.gameRecord.winner === 'player1',
+  'loser': $ctrl.gameRecord.winner === 'computer',
+  'draw': $ctrl.gameRecord.winner === 'draw'
+  }"
+  ng-show="$ctrl.gameRecord.winner">
+
+  <h3 ng-if="$ctrl.gameRecord.winner === 'draw'">
+    <i class="fa fa-meh-o"></i> It's a draw <i class="fa fa-meh-o"></i>
+  </h3>
+
+  <h3 ng-if="$ctrl.gameRecord.winner === 'computer'">
+    <i class="fa fa-frown-o"></i> You lose <i class="fa fa-frown-o"></i>
+  </h3>
+
+  <h3 ng-if="$ctrl.gameRecord.winner === 'player1'">
+    <i class="glyphicon glyphicon-star-empty"></i> You win <i class="glyphicon glyphicon-star-empty"></i>
+  </h3>
+
+</div>

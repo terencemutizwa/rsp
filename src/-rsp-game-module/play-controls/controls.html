@@ -1,0 +1,18 @@
+<ul class="options"
+  role="listbox">
+
+  <li ng-repeat="control in $ctrl.__controls"
+    role="listitem">
+    <button ng-click="$ctrl.play(control)"
+      ng-disabled="$ctrl.played"
+      class="btn btn-primary btn-lg btn-block">
+      {{control.name}}
+    </button>
+  </li>
+  <li ng-show="$ctrl.played">
+    <button ng-click="$ctrl.reset()"
+      class="btn btn-lg btn-default">
+      <i class="fa fa-refresh"></i>
+    </button>
+  </li>
+</ul>
