@@ -7,11 +7,11 @@ module.exports = {
     context: __dirname + '/src',
     entry: {
         app: __dirname + '/src/app.js',
-        vendor: ['jquery', 'bootstrap', 'angular']
+        vendor: ['jquery', 'bootstrap', 'angular' ]
     },
     output: {
         path: __dirname + '/dist',
-        filename: 'app.min.js'
+        filename: '[name].min.js'
     },
     module: {
         loaders: [
@@ -56,13 +56,16 @@ module.exports = {
         contentBase: './src',
         hot: true,
         watchContentBase: true,
-        overlay: true
+        overlay: true,
+        port: 8081
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
+        /*new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'vendor.min.js'
-        }),
+            filename: 'vendor.min.js',
+            minChunks: 1,
+            chunksSortMode: 'dependency'
+        }),*/
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({

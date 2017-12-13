@@ -4,6 +4,7 @@ import './player_display.scss';
 
 class PlayerDisplayCtrl {
     constructor(rspGameService) {
+        'ngInject';
         this.rspGameService = rspGameService;
         this.gameRecord = this.rspGameService.gameRecord;
     }
@@ -11,9 +12,9 @@ class PlayerDisplayCtrl {
 }
 
 export default {
-    bindings:{
-      player:'@'
+    bindings: {
+        player: '@'
     },
     controller: PlayerDisplayCtrl,
     template: displayTemplate
-}
+};

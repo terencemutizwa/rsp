@@ -5,12 +5,12 @@ class GameControlsCtrl {
     constructor(rspGameService) {
         'ngInject';
         this.rspGameService = rspGameService;
-        this.__controls = rspGameService.getControls();
+        this.controls = rspGameService.controls;
         this.played = false;
     }
 
     play(control) {
-        this.played =  true;
+        this.played = true;
         this.rspGameService.play(control);
     }
 
@@ -23,4 +23,4 @@ class GameControlsCtrl {
 export default {
     controller: GameControlsCtrl,
     template: controllsTemplate
-}
+};
