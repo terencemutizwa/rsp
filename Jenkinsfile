@@ -5,6 +5,13 @@ pipeline {
             steps {
                 sh 'npm i'
             }
+            steps {
+                sh 'npm test'
+            }
+
+            steps {
+                sh 'npm build'
+            }
         }
     }
 }
