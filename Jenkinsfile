@@ -20,14 +20,14 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'cp -r build/ /apps/dev1.quickeast.com'
+                sh 'cp -r dist/ /apps/dev1.quickeast.com'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
     post {
         always {
-            archiveArtifacts artifacts: 'build/**', fingerprint: true
+            archiveArtifacts artifacts: 'dist/**', fingerprint: true
         }
     }
 }
