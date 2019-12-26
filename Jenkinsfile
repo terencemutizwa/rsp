@@ -15,6 +15,15 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Deliver for development') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'cp -r build/ /apps/dev1.quickeast.com'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+            }
+        }
     }
     post {
         always {
