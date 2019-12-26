@@ -6,7 +6,7 @@ pipeline {
     stage('Docker node test') {
       agent {
         docker {
-          image 'node:7-alpine'
+          image 'node:6-alpine'
           args '--name docker-node' // list any args
         }
       }
