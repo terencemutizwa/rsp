@@ -1,5 +1,8 @@
 pipeline {
     agent { docker { image 'node:6.3' } }
+    environment {
+        CI = 'true'
+    }
     stages {
         stage('Start') {
             steps {
@@ -11,6 +14,11 @@ pipeline {
           steps {
                 sh 'npm run build'
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/**', fingerprint: true
         }
     }
 }
