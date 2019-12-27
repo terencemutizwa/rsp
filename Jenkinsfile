@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                 sh 'cp -r dist/. /var/jenkins_home/apps/dev1.quickeast.com'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+               // input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
